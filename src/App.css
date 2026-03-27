@@ -1,76 +1,25 @@
-.app {
-  min-height: 100vh;
+body {
+  font-family: Arial;
+  background: #f4f6f8;
 }
 
-.app-header {
-  background: #111827;
-  color: white;
-  padding: 24px;
+.app {
   text-align: center;
 }
 
-.tab-bar {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  padding: 16px;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  flex-wrap: wrap;
+.title {
+  padding: 20px;
 }
 
-.tab-bar button {
-  background: #2563eb;
-  color: white;
-}
-
-.main-content {
-  max-width: 1100px;
-  margin: 24px auto;
-  padding: 0 16px 32px;
+.tabs button {
+  margin: 5px;
+  padding: 10px;
 }
 
 .card {
   background: white;
-  border-radius: 14px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  margin-bottom: 20px;
-}
-
-.section-title {
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.grid-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
-}
-
-.status-text {
-  font-size: 14px;
-  color: #4b5563;
-}
-
-.primary-btn {
-  background: #2563eb;
-  color: white;
-}
-
-.secondary-btn {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.danger-btn {
-  background: #dc2626;
-  color: white;
+  margin: 20px auto;
+  width: 400px;
+  border-radius: 10px;
 }
