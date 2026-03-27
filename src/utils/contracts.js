@@ -4,7 +4,7 @@ import ContestManagerABI from "../abi/ContestManager.json";
 import MembershipABI from "../abi/Membership.json";
 import NovelTokenABI from "../abi/NovelToken.json";
 import RoleManagerABI from "../abi/RoleManager.json";
-import GovernorABI from "../abi/SimpleGovernor.json";
+import GovernorABI from "../abi/Governor.json";
 
 export const CONTRACT_ADDRESSES = {
   contestManager: process.env.REACT_APP_CONTEST_MANAGER_ADDRESS,
