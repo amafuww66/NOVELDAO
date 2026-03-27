@@ -35,15 +35,6 @@ export const getGovernorWriteContract = async () => {
   );
 };
 
-export const getContestManagerWriteContract = async () => {
-  const signer = await getSigner();
-  return new ethers.Contract(
-    CONTRACT_ADDRESSES.contestManager,
-    ContestManagerABI,
-    signer
-  );
-};
-
 export {
   ContestManagerABI,
   MembershipABI,
