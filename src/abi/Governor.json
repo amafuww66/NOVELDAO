@@ -12,33 +12,18 @@
 				"type": "address"
 			},
 			{
-				"internalType": "address",
-				"name": "_membership",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_roleManager",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_contestManager",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_priceFeed",
-				"type": "address"
-			},
-			{
 				"internalType": "uint256",
-				"name": "_membershipPriceUsd",
+				"name": "_votingPeriod",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_tokenPriceUsd",
+				"name": "_quorumTokens",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_proposalThreshold",
 				"type": "uint256"
 			}
 		],
@@ -73,106 +58,6 @@
 			{
 				"indexed": true,
 				"internalType": "address",
-				"name": "buyer",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "contestId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "paidWei",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "tokenAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "ExtraTokensPurchased",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "oldGovernor",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "newGovernor",
-				"type": "address"
-			}
-		],
-		"name": "GovernorUpdated",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "oldPriceUsd",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "newPriceUsd",
-				"type": "uint256"
-			}
-		],
-		"name": "MembershipPriceUpdated",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "reader",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "contestId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "paidWei",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "votingTokensGranted",
-				"type": "uint256"
-			}
-		],
-		"name": "MembershipPurchased",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
 				"name": "previousOwner",
 				"type": "address"
 			},
@@ -192,41 +77,60 @@
 			{
 				"indexed": true,
 				"internalType": "uint256",
-				"name": "contestId",
+				"name": "proposalId",
 				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "proposer",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "totalPool",
+				"name": "value",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
-				"internalType": "uint256",
-				"name": "platformFee",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "firstPrize",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "secondPrize",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "thirdPrize",
+				"name": "deadline",
 				"type": "uint256"
 			}
 		],
-		"name": "RewardDistributed",
+		"name": "ProposalCreated",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "proposalId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "executor",
+				"type": "address"
+			}
+		],
+		"name": "ProposalExecuted",
 		"type": "event"
 	},
 	{
@@ -235,116 +139,102 @@
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "oldPriceUsd",
+				"name": "oldThreshold",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
 				"internalType": "uint256",
-				"name": "newPriceUsd",
+				"name": "newThreshold",
 				"type": "uint256"
 			}
 		],
-		"name": "TokenPriceUpdated",
+		"name": "ProposalThresholdUpdated",
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "INITIAL_VOTING_TOKENS",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "MAX_PRICE_AGE",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "PLATFORM_FEE_PERCENT",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "accumulatedPlatformFees",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
 				"internalType": "uint256",
-				"name": "contestId",
+				"name": "oldQuorum",
 				"type": "uint256"
 			},
 			{
+				"indexed": false,
 				"internalType": "uint256",
-				"name": "tokenAmount",
+				"name": "newQuorum",
 				"type": "uint256"
 			}
 		],
-		"name": "buyExtraTokens",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
+		"name": "QuorumUpdated",
+		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "contestManager",
-		"outputs": [
+		"anonymous": false,
+		"inputs": [
 			{
-				"internalType": "contract ContestManager",
-				"name": "",
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "proposalId",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "voter",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "support",
+				"type": "bool"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "weight",
+				"type": "uint256"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
+		"name": "Voted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "oldPeriod",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "newPeriod",
+				"type": "uint256"
+			}
+		],
+		"name": "VotingPeriodUpdated",
+		"type": "event"
 	},
 	{
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "proposalId",
 				"type": "uint256"
 			}
 		],
-		"name": "contestPrizePool",
+		"name": "canExecute",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "bool",
 				"name": "",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -354,11 +244,11 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "contestId",
+				"name": "proposalId",
 				"type": "uint256"
 			}
 		],
-		"name": "distributeReward",
+		"name": "execute",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -367,126 +257,21 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "contestId",
-				"type": "uint256"
-			}
-		],
-		"name": "getContestPrizePool",
-		"outputs": [
-			{
-				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getLatestETHPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getMembershipPriceInWei",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getPriceFeedDecimals",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "tokenAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "getTokenPriceInWei",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getTreasuryBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "governor",
-		"outputs": [
+			},
 			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
 		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "membership",
+		"name": "hasVoted",
 		"outputs": [
 			{
-				"internalType": "contract Membership",
+				"internalType": "bool",
 				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "membershipPriceUsd",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -520,12 +305,25 @@
 	},
 	{
 		"inputs": [],
-		"name": "priceFeed",
+		"name": "proposalCount",
 		"outputs": [
 			{
-				"internalType": "contract AggregatorV3Interface",
+				"internalType": "uint256",
 				"name": "",
-				"type": "address"
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "proposalThreshold",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -535,13 +333,106 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "contestId",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "purchaseMembership",
-		"outputs": [],
-		"stateMutability": "payable",
+		"name": "proposals",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "proposer",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "deadline",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "yesVotes",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "noVotes",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "executed",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "target",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "data",
+				"type": "bytes"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"name": "propose",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "quorumTokens",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -552,27 +443,14 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "roleManager",
-		"outputs": [
-			{
-				"internalType": "contract RoleManager",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "_governor",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "newThreshold",
+				"type": "uint256"
 			}
 		],
-		"name": "setGovernor",
+		"name": "setProposalThreshold",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -581,11 +459,11 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "newPriceUsd",
+				"name": "newQuorum",
 				"type": "uint256"
 			}
 		],
-		"name": "setMembershipPriceUsd",
+		"name": "setQuorumTokens",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -594,26 +472,13 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "newPriceUsd",
+				"name": "newPeriod",
 				"type": "uint256"
 			}
 		],
-		"name": "setTokenPriceUsd",
+		"name": "setVotingPeriod",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "tokenPriceUsd",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -633,11 +498,23 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "usdAmount",
+				"name": "proposalId",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "support",
+				"type": "bool"
 			}
 		],
-		"name": "usdToWei",
+		"name": "vote",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "votingPeriod",
 		"outputs": [
 			{
 				"internalType": "uint256",
