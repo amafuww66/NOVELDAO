@@ -1,1 +1,76 @@
+.app {
+  min-height: 100vh;
+}
 
+.app-header {
+  background: #111827;
+  color: white;
+  padding: 24px;
+  text-align: center;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.tab-bar button {
+  background: #2563eb;
+  color: white;
+}
+
+.main-content {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px 32px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.status-text {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.danger-btn {
+  background: #dc2626;
+  color: white;
+}
