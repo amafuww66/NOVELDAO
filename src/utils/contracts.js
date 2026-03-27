@@ -35,6 +35,15 @@ export const getGovernorWriteContract = async () => {
   );
 };
 
+export const getGovernorReadContract = async () => {
+  const provider = getBrowserProvider();
+  return new ethers.Contract(
+    CONTRACT_ADDRESSES.governor,
+    GovernorABI,
+    provider
+  );
+};
+
 export {
   ContestManagerABI,
   MembershipABI,
