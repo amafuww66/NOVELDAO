@@ -1,49 +1,46 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import ConnectWallet from "./components/ConnectWallet";
-import DAOStatus from "./components/DAOStatus";
-import ProposalList from "./components/ProposalList";
+import Overview from "./components/Overview";
+import MemberCenter from "./components/MemberCenter";
+import Governance from "./components/Governance";
 import NovelContest from "./components/NovelContest";
 import TreasuryPanel from "./components/TreasuryPanel";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("overview");
+  const [tab, setTab] = useState("overview");
   const [account, setAccount] = useState("");
 
-  const renderTab = () => {
-    switch (activeTab) {
+  const renderPage = () => {
+    switch (tab) {
       case "overview":
-        return <DAOStatus account={account} />;
-      case "wallet":
-        return <ConnectWallet account={account} setAccount={setAccount} />;
+        return <Overview />;
+      case "member":
+        return <MemberCenter account={account} setAccount={setAccount} />;
       case "governance":
-        return <ProposalList account={account} />;
+        return <Governance account={account} />;
       case "contest":
         return <NovelContest account={account} />;
       case "treasury":
-        return <TreasuryPanel account={account} />;
+        return <TreasuryPanel />;
       default:
-        return <DAOStatus account={account} />;
+        return <Overview />;
     }
   };
 
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>Novel DAO Dashboard</h1>
-        <p>Minimum Deliverable Interactive Front-End</p>
-      </header>
+      <h1 className="title">Novel DAO</h1>
 
-      <nav className="tab-bar">
-        <button onClick={() => setActiveTab("overview")}>Overview</button>
-        <button onClick={() => setActiveTab("wallet")}>Member Center</button>
-        <button onClick={() => setActiveTab("governance")}>Governance</button>
-        <button onClick={() => setActiveTab("contest")}>Novel Contest</button>
-        <button onClick={() => setActiveTab("treasury")}>Treasury</button>
-      </nav>
+      <div className="tabs">
+        <button onClick={() => setTab("overview")}>Overview</button>
+        <button onClick={() => setTab("member")}>Member</button>
+        <button onClick={() => setTab("governance")}>Governance</button>
+        <button onClick={() => setTab("contest")}>Contest</button>
+        <button onClick={() => setTab("treasury")}>Treasury</button>
+      </div>
 
-      <main className="main-content">{renderTab()}</main>
+      <div className="content">{renderPage()}</div>
     </div>
   );
 }
