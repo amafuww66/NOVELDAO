@@ -1,1 +1,26 @@
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
